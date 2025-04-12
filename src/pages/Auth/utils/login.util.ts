@@ -18,6 +18,8 @@ export const login = async ({ email, password }: { email: string; password: stri
     }
 
     const requestBody = { email, password }
+    console.log(`${server}/api/auth/login`);
+
 
     const response = await fetch(`${server}/api/auth/login`, {
       method: "POST",
@@ -44,6 +46,8 @@ export const login = async ({ email, password }: { email: string; password: stri
 };
 
 export const checkLogin = async () => {
+  console.log(`${server}/api/auth/check-login`);
+
   const res = await fetch(`${server}/api/auth/check-login`, {
     method: "GET",
     credentials: "include",
