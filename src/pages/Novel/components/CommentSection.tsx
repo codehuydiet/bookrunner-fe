@@ -64,7 +64,6 @@ const CommentSection: React.FC = () => {
       likes: 3,
     }
   ];
-
   return (
     <div className="w-full mt-8 relative z-10 max-w-7xl mx-auto">
       <div className="bg-gray-900/70 backdrop-blur-sm border border-purple-900/50 rounded-lg p-6 shadow-[0_0_20px_rgba(79,42,173,0.2)]">

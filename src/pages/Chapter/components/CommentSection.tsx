@@ -12,7 +12,7 @@ interface Comment {
   replies?: Comment[];
 }
 
-const CommentSection: React.FC = ({chapterId:}) => {
+const CommentSection: React.FC = () => {
   const [comment, setComment] = useState<string>("");
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -155,8 +155,8 @@ const CommentSection: React.FC = ({chapterId:}) => {
           ))}
         </div>
 
-       {/* Load More Comments Button */}
-       <div className="mt-8 text-center">
+        {/* Load More Comments Button */}
+        <div className="mt-8 text-center">
           <button className="px-6 py-2 bg-gray-800/60 text-purple-300 font-medium rounded-lg hover:bg-gray-700/60 border border-purple-900/30 transition-colors duration-300 backdrop-blur-sm">
             Load More Comments
           </button>
