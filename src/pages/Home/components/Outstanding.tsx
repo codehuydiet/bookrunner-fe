@@ -19,6 +19,7 @@ const Outstanding: React.FC = () => {
       setIsLoading(true);
       try {
         const response = await fetch(`${process.env.SERVER}${API_BASE_URL}/novels/outstanding`);
+        console.log(`${process.env.SERVER}${API_BASE_URL}/novels/outstanding`);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch outstanding novels: ${response.status}`);
@@ -129,8 +130,8 @@ const Outstanding: React.FC = () => {
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
-                    ? 'bg-indigo-400 scale-110'
-                    : 'bg-gray-700 hover:bg-indigo-700'
+                  ? 'bg-indigo-400 scale-110'
+                  : 'bg-gray-700 hover:bg-indigo-700'
                   }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
