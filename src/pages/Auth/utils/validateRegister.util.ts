@@ -10,5 +10,7 @@ export const validateForm = (username: string, email: string, password: string) 
     if (password.length < 6) newErrors.password = 'Password must be at least 6 characters long.';
 
     setErrors(newErrors);
+    console.log(errors);
+
     return Object.keys(newErrors).length === 0;
 };

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaCalendarAlt, FaEye, FaStar } from 'react-icons/fa';
-import CommentSection from './components/CommentSection';
+import { FaCalendarAlt } from 'react-icons/fa';
 import RelatedNovels from './components/RelatedNovels';
 import CoverImage from './components/CoverImage';
 import NovelDetail from './components/NovelDetail';
 import Poster from './components/Poster';
-import { AuthState, NovelData, User } from '../../types/auth';
+import { AuthState, NovelData } from '../../types/auth';
 import TopNovels from './components/TopNovels';
 import { checkLogin } from '../Auth/utils/login.util';
 
@@ -108,7 +107,7 @@ const NovelPage: React.FC = () => {
                 </div>
                 {
                     novel ? (
-                        <RelatedNovels novel={novel} />
+                        <RelatedNovels/>
                     ) : (
                         <p>Loading...</p>
                     )

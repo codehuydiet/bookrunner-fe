@@ -86,11 +86,32 @@ export interface NovelRecent {
         like: number,
         numberofvote: number,
         createat: string,
+        author: {
+            id: number,
+            name: string
+        }
     },
     last_read_chapter_id: number,
     last_read_chapter_name: string,
     last_read_date: string,
     createat: string,
+}
+export interface NovelLike {
+    id: number,
+    novel: {
+        id: number,
+        title: string,
+        image: string,
+        novel_desc: string,
+        view: number,
+        like: number,
+        numberofvote: number,
+        createat: string,
+        author: {
+            id: number,
+            name: string
+        }
+    },
 }
 
 export interface Payment {
@@ -135,6 +156,7 @@ export interface AuthResponse {
 }
 
 export interface ChapterData {
+    id: number;
     novel: {
         id: number,
         title: string,

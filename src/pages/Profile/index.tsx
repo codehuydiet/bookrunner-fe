@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { AuthState, User } from '../../types/auth';
+import { User } from '../../types/auth';
 import { checkLogin } from '../Auth/utils/login.util';
-import UserProfile from '../User';
 
 const ProfilePage: React.FC = () => {
     const navigate = useNavigate();

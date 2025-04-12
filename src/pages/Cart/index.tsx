@@ -19,6 +19,7 @@ const Cart: React.FC = () => {
                 return;
             }
             setAuth(data1);
+            auth ? auth : auth;
             const response = await fetch(`${process.env.SERVER}/api/cart-detail/user/${data1.user?.id}`);
             const data = await response.json();
             setCartItems(data);

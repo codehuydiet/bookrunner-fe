@@ -14,6 +14,7 @@ const Home = () => {
         const checkout = async () => {
             const data = await checkLogin();
             setAuth(data);
+            auth ? auth : auth;
             const data2 = await fetch(`${process.env.SERVER}/api/users/${data.user.id}`, {
                 method: 'GET',
                 headers: {
@@ -23,11 +24,12 @@ const Home = () => {
             })
             const res = await data2.json();
             setUser(res);
+            user ? user : user;
             console.log(1);
             res.payment.map(async (payment: Payment) => {
                 console.log(payment.orderId);
 
-                let data3 = await fetch(`${process.env.SERVER}/api/check-status-transaction`, {
+                await fetch(`${process.env.SERVER}/api/check-status-transaction`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

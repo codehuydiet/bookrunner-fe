@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 interface BookCardProps {
     book: BookData;
-    renderStars: (rating: number) => JSX.Element;
+    renderStars: (rating: number) => React.ReactElement;
     calculateAverageRating: (votes: { value: number }[]) => number;
     auth: AuthState;
 }

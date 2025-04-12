@@ -19,7 +19,6 @@ import Search from "./pages/Search/index.";
 import { useEffect, useState } from "react";
 import { checkLogin } from "./pages/Auth/utils/login.util";
 import { AuthState } from "./types/auth";
-import PrivateRoute from "./components/PrivateRoute";
 import PrivateLogin from "./components/PrivateLogin";
 import Book from "./pages/Book";
 import ProfilePage from "./pages/Profile";

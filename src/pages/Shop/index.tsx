@@ -5,7 +5,6 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Filter from './component/Filter';
-import Featured from './component/Featured';
 import { AuthState, BookData } from '../../types/auth';
 import BookCard from './component/BookCard';
 import BookListItem from './component/BookListItem';
@@ -17,7 +16,6 @@ const Shop: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [viewMode, setViewMode] = useState('grid');
     const [books, setBooks] = useState<BookData[]>([]);
-    const [ftBooks, setFtBooks] = useState<BookData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOption, setSortOption] = useState('best-selling');
     const [auth, setAuth] = useState<AuthState>({
@@ -36,7 +34,6 @@ const Shop: React.FC = () => {
                 console.log(data2);
 
                 setBooks(data);
-                setFtBooks(data);
             }
             catch (error) {
                 console.error('Error fetching books:', error);
@@ -115,6 +112,10 @@ const Shop: React.FC = () => {
         setSortOption(e.target.value);
     };
 
+    const handleCategoryChange = (categoryId: string | number) => {
+        setSelectedCategory(String(categoryId));
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-indigo-950 p-6 flex flex-col gap-8 relative">
             {/* Background effects */}
@@ -131,7 +132,7 @@ const Shop: React.FC = () => {
                 {/* Main shop content */}
                 <div className="flex flex-col lg:flex-row gap-6">
                     {/* Sidebar */}
-                    <Filter selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+                    <Filter selectedCategory={selectedCategory} setSelectedCategory={handleCategoryChange} />
 
                     {/* Book grid */}
                     <div className="w-full lg:w-3/4">
@@ -230,7 +231,7 @@ const Header: React.FC<{ searchQuery: string, setSearchQuery: (query: string) =>
 
             <Link to="/cart" className="relative p-2 bg-gray-800/70 border border-purple-900/50 hover:border-purple-700/50 rounded-md text-purple-300 transition-colors duration-300">
                 <FaShoppingCart className="text-xl" />
-                {auth.user?.cartDetail?.length > 0 && (
+                {auth.user?.cartDetail && auth.user.cartDetail.length > 0 && (
                     <span className="absolute -top-1 -right-1 w-5 h-5 bg-purple-600 rounded-full text-xs flex items-center justify-center text-white">{auth.user?.cartDetail.length}</span>)}
             </Link>
         </div>

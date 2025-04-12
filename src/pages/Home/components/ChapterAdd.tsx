@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardItem from '../../../components/cardItem';
 import ViewMore from './ViewMore';
-import { ChapterData, NovelData } from '../../../types/auth';
+import { ChapterData } from '../../../types/auth';
 
 const API_BASE_URL = "/api";
 const ChapterAdd = () => {
   const [recentChapters, setRecentChapters] = useState<ChapterData[]>([]);
-  const [novel, setNovel] = useState<NovelData>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchRecentNovels = async () => {
-      setIsLoading(true);
       try {
         const response = await fetch(`${API_BASE_URL}/chapters/recent`);
         if (!response.ok) {
@@ -23,9 +19,6 @@ const ChapterAdd = () => {
         console.log(data);
       } catch (error) {
         console.error("Error fetching recent novels:", error);
-        setError(error instanceof Error ? error.message : "Failed to load recent novels");
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchRecentNovels();

@@ -1,5 +1,5 @@
-import React, { use, useEffect, useState } from 'react';
-import { FaBookmark, FaEye, FaHeart, FaShareAlt } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaEye, FaHeart } from 'react-icons/fa';
 import { AuthState, NovelData } from '../../../types/auth';
 
 interface Novel {
@@ -18,7 +18,7 @@ const CoverImage: React.FC<Novel> = ({ novel, auth }) => {
     } else {
       novel.like += 1;
     }
-    const response = await fetch(`${process.env.SERVER}/api/novel-like`, {
+    await fetch(`${process.env.SERVER}/api/novel-like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

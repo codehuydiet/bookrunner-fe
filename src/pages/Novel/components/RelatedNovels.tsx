@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NovelData } from '../../../types/auth';
 
-interface RelatedNovel {
-  novel: NovelData
-}
 
-const RelatedNovels: React.FC<RelatedNovel> = ({ novel }) => {
+const RelatedNovels: React.FC = () => {
   const [relatedNovel, setRelatedNovel] = useState<NovelData[]>([]);
   useEffect(() => {
     const fetchData = async () => {

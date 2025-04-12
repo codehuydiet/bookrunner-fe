@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-    FaSearch, FaFilter, FaBookOpen, FaTimes, FaHistory, FaStar, FaStarHalfAlt, FaRegStar,
-    FaEye, FaBookmark, FaChevronRight, FaChevronDown, FaChevronUp
+    FaSearch, FaFilter, FaTimes, FaStar, FaStarHalfAlt, FaRegStar, FaChevronRight, FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
 
 const Search: React.FC = () => {

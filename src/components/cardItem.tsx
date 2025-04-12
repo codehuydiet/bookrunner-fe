@@ -1,4 +1,4 @@
-const CardItem = ({ chapterTitle, name, image, id }: { chapterTitle: string, name: string, image: string, id: string }) => {
+const CardItem = ({ chapterTitle, name, image, id }: { chapterTitle: string, name: string, image: string, id: number }) => {
   return (
     <a href={`/chapter/${id}`} className="flex flex-col w-full ">
       <div className="relative">

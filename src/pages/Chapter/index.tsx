@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import SidebarToggle from "./components/SidebarToggle";
 import Sidebar from "./components/Sidebar";
 import ChapterContent from "./components/ChapterContent";
-import CommentSection from "./components/CommentSection";
 import Background from "./components/Background";
 import { AuthState, ChapterData, NovelData } from "../../types/auth";
 import { checkLogin } from "../Auth/utils/login.util";
@@ -87,6 +86,7 @@ const Chapter: React.FC = () => {
 
                     const res10 = await checkLogin();
                     setAuth(res10);
+                    auth? auth : auth;
                     if (res10.isAuthenticated) {
                         const response = await fetch(`${process.env.SERVER}/api/novelrecent`, {
                             method: 'POST',

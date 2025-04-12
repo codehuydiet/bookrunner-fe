@@ -1,17 +1,18 @@
-import React, { use, useEffect, useState } from 'react';
-import { AuthState } from '../../types/auth';
+import React, { useEffect, useState } from 'react';
+import { AuthState, NovelLike, NovelRecent } from '../../types/auth';
 import { checkLogin } from '../Auth/utils/login.util';
 import { Link } from 'react-router-dom';
 
 const Bookmark: React.FC = () => {
     const [activeTab, setActiveTab] = useState('reading');
     const [auth, setAuth] = useState<AuthState>();
-    const [recentNovel, setRecentNovel] = useState([])
-    const [like, setLike] = useState([])
+    const [recentNovel, setRecentNovel] = useState<NovelRecent[]>([])
+    const [like, setLike] = useState<NovelLike[]>([])
     useEffect(() => {
         const checkout = async () => {
             const res = await checkLogin();
             setAuth(res);
+            auth ? auth : auth;
             const response = await fetch(`${process.env.SERVER}/api/novelrecent/user/${res.user.id}`)
             const res2 = await response.json();
             const response2 = await fetch(`${process.env.SERVER}/api/novel-like/user/${res.user.id}`)

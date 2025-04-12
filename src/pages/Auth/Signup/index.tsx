@@ -46,6 +46,8 @@ const Register = () => {
                 email: formData.email,
                 password: formData.password
             });
+            console.log(response.data);
+
             navigate('/login');
         } catch (err) {
             const error = err as ErrorResponse;
