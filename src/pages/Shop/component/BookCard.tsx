@@ -13,7 +13,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, renderStars, calculateAverage
     const addToCart = async () => {
         if (auth.isAuthenticated) {
             try {
-                const res = await fetch('http://localhost:8888/api/cart-detail', {
+                const res = await fetch(`${process.env.SERVER}/api/cart-detail`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

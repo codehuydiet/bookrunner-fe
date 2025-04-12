@@ -41,7 +41,7 @@ const Register = () => {
         }
 
         try {
-            const response = await axios.post<AuthResponse>('http://localhost:8888/api/auth/register', {
+            const response = await axios.post<AuthResponse>(`${process.env.SERVER}/api/auth/register`, {
                 username: formData.name,
                 email: formData.email,
                 password: formData.password

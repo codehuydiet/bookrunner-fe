@@ -10,7 +10,7 @@ const Book = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:8888/api/books/${id}`)
+      const response = await fetch(`${process.env.SERVER}/api/books/${id}`)
       const data = await response.json()
       setBook(data)
       console.log(data);

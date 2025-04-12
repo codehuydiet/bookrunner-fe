@@ -19,7 +19,7 @@ const Cart: React.FC = () => {
                 return;
             }
             setAuth(data1);
-            const response = await fetch(`http://localhost:8888/api/cart-detail/user/${data1.user?.id}`);
+            const response = await fetch(`${process.env.SERVER}/api/cart-detail/user/${data1.user?.id}`);
             const data = await response.json();
             setCartItems(data);
         }
@@ -31,7 +31,7 @@ const Cart: React.FC = () => {
     };
 
     const removeItem = (id: number) => {
-        fetch(`http://localhost:8888/api/cart-detail/${id}`,
+        fetch(`${process.env.SERVER}/api/cart-detail/${id}`,
             {
                 method: 'DELETE',
                 headers: {
@@ -44,7 +44,7 @@ const Cart: React.FC = () => {
 
     const updateQuantity = (id: number, change: number, index: number) => {
         if (change == 1) {
-            fetch('http://localhost:8888/api/cart-detail/add-quantity',
+            fetch(`${process.env.SERVER}/api/cart-detail/add-quantity`,
                 {
                     method: 'POST',
                     headers: {
@@ -56,7 +56,7 @@ const Cart: React.FC = () => {
                 }
             )
         } else if (change == -1) {
-            fetch('http://localhost:8888/api/cart-detail/remove-quantity',
+            fetch(`${process.env.SERVER}/api/cart-detail/remove-quantity`,
                 {
                     method: 'POST',
                     headers: {
@@ -84,7 +84,7 @@ const Cart: React.FC = () => {
         if (cartItems.length == 0) {
             alert('Vui lòng thêm vào giỏ hàng');
         } else {
-            const res = await fetch('http://localhost:8888/api/payment', {
+            const res = await fetch(`${process.env.SERVER}/api/payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const Cart: React.FC = () => {
                 })
             })
             const data = await res.json();
-            const res3 = await fetch('http://localhost:8888/api/check-status-transaction', {
+            const res3 = await fetch(`${process.env.SERVER}/api/check-status-transaction`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ const Cart: React.FC = () => {
             })
             const data3 = await res3.json();
             console.log(data3);
-            const res2 = await fetch('http://localhost:8888/api/payments', {
+            const res2 = await fetch(`${process.env.SERVER}/api/payments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

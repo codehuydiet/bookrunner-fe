@@ -4,7 +4,7 @@ import NovelCard from "./NovelCard";
 import { FaRegHandPointRight, FaSpinner } from "react-icons/fa6";
 import { NovelDataNoUser } from "../../../types/auth";
 
-const API_BASE_URL = "http://localhost:8888/api";
+const API_BASE_URL = "/api";
 
 const RecentAdd: React.FC = () => {
   const [recentNovels, setRecentNovels] = useState<NovelDataNoUser[]>([]);

@@ -11,7 +11,7 @@ const UserProfile: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`http://localhost:8888/api/users/${id}`);
+        const response = await fetch(`${process.env.SERVER}/api/users/${id}`);
         const data = await response.json();
         setUser(data);
         console.log(data);

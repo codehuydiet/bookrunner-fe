@@ -3,7 +3,7 @@ import CardItem from '../../../components/cardItem';
 import ViewMore from './ViewMore';
 import { ChapterData, NovelData } from '../../../types/auth';
 
-const API_BASE_URL = "http://localhost:8888/api";
+const API_BASE_URL = "/api";
 const ChapterAdd = () => {
   const [recentChapters, setRecentChapters] = useState<ChapterData[]>([]);
   const [novel, setNovel] = useState<NovelData>();
@@ -51,7 +51,7 @@ const ChapterAdd = () => {
             className="transition-all duration-300 hover:scale-[1.02] group"
           >
             <div className="relative p-0.5 rounded-lg overflow-hidden group-hover:bg-gradient-to-br from-indigo-600/20 via-indigo-500/10 to-transparent">
-              <CardItem chapterTitle={chapter.name} name={chapter.novel.title} image={chapter.novel.image} id={chapter.id}/>
+              <CardItem chapterTitle={chapter.name} name={chapter.novel.title} image={chapter.novel.image} id={chapter.id} />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-indigo-600/5 to-transparent transition-opacity duration-300 pointer-events-none"></div>
               <div className="absolute inset-0 rounded-lg border border-zinc-800 group-hover:border-indigo-800/40 transition-colors duration-300 pointer-events-none"></div>
             </div>

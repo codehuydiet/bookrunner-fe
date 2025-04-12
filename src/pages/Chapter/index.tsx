@@ -8,7 +8,7 @@ import Background from "./components/Background";
 import { AuthState, ChapterData, NovelData } from "../../types/auth";
 import { checkLogin } from "../Auth/utils/login.util";
 
-const API_BASE_URL = "http://localhost:8888/api";
+const API_BASE_URL = "/api";
 
 const Chapter: React.FC = () => {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
@@ -88,7 +88,7 @@ const Chapter: React.FC = () => {
                     const res10 = await checkLogin();
                     setAuth(res10);
                     if (res10.isAuthenticated) {
-                        const response = await fetch(`http://localhost:8888/api/novelrecent`, {
+                        const response = await fetch(`${process.env.SERVER}/api/novelrecent`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

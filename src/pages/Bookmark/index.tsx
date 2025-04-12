@@ -12,9 +12,9 @@ const Bookmark: React.FC = () => {
         const checkout = async () => {
             const res = await checkLogin();
             setAuth(res);
-            const response = await fetch(`http://localhost:8888/api/novelrecent/user/${res.user.id}`)
+            const response = await fetch(`${process.env.SERVER}/api/novelrecent/user/${res.user.id}`)
             const res2 = await response.json();
-            const response2 = await fetch(`http://localhost:8888/api/novel-like/user/${res.user.id}`)
+            const response2 = await fetch(`${process.env.SERVER}/api/novel-like/user/${res.user.id}`)
             const res1 = await response2.json();
             setLike(res1)
             setRecentNovel(res2)

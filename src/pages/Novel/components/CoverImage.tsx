@@ -18,7 +18,7 @@ const CoverImage: React.FC<Novel> = ({ novel, auth }) => {
     } else {
       novel.like += 1;
     }
-    const response = await fetch('http://localhost:8888/api/novel-like', {
+    const response = await fetch(`${process.env.SERVER}/api/novel-like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const CoverImage: React.FC<Novel> = ({ novel, auth }) => {
   }
   useEffect(() => {
     const checkLike = async () => {
-      const res = await fetch(`http://localhost:8888/api/novel-like/novel/${novel.id}`);
+      const res = await fetch(`${process.env.SERVER}/api/novel-like/novel/${novel.id}`);
       const data = await res.json();
       console.log(data);
 

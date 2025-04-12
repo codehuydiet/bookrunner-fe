@@ -11,7 +11,7 @@ const RelatedNovels: React.FC<RelatedNovel> = ({ novel }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8888/api/novels`);
+        const response = await fetch(`${process.env.SERVER}/api/novels`);
         const data = await response.json();
         // console.log(data);
         setRelatedNovel(data);

@@ -29,7 +29,7 @@ const Shop: React.FC = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await fetch('http://localhost:8888/api/books');
+                const response = await fetch(`${process.env.SERVER}/api/books`);
                 const data = await response.json();
                 const data2 = await checkLogin();
                 setAuth(data2);

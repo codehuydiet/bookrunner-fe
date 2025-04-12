@@ -23,11 +23,11 @@ const NovelPage: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8888/api/novels/${id}`);
+                const response = await fetch(`${process.env.SERVER}/api/novels/${id}`);
                 const data = await response.json();
                 // console.log(data);
                 setNovel(data[0]);
-                const response2 = await fetch(`http://localhost:8888/api/novels/outstanding`);
+                const response2 = await fetch(`${process.env.SERVER}/api/novels/outstanding`);
                 const data2 = await response2.json();
                 // console.log("outstanding ", data2);
                 setNovels(data2);

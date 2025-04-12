@@ -1,6 +1,6 @@
 export const register = async (username: string, email: string, password: string) => {
     try {
-        const response = await fetch("http://localhost:8888/api/auth/register", {
+        const response = await fetch(`${process.env.SERVER}/api/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

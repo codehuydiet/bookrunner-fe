@@ -27,7 +27,7 @@ const Filter: React.FC<FilterProps> = ({
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('http://localhost:8888/api/categories');
+                const response = await fetch(`${process.env.SERVER}/api/categories`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }

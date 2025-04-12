@@ -14,7 +14,7 @@ const Home = () => {
         const checkout = async () => {
             const data = await checkLogin();
             setAuth(data);
-            const data2 = await fetch(`http://localhost:8888/api/users/${data.user.id}`, {
+            const data2 = await fetch(`${process.env.SERVER}/api/users/${data.user.id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const Home = () => {
             res.payment.map(async (payment: Payment) => {
                 console.log(payment.orderId);
 
-                let data3 = await fetch("http://localhost:8888/api/check-status-transaction", {
+                let data3 = await fetch(`${process.env.SERVER}/api/check-status-transaction`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
