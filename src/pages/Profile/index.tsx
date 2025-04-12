@@ -46,7 +46,7 @@ const ProfilePage: React.FC = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const respopnse = await fetch(`${process.env.SERVER}/api/users/${userProfile?.id}`, {
+            await fetch(`${process.env.SERVER}/api/users/${userProfile?.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

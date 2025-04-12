@@ -82,13 +82,13 @@ const Chapter: React.FC = () => {
                         updateView(+chapter.novel.id),
                         getNovel(+chapter.novel.id)
                     ]);
-                    setNovel(novelData[0]);
+                    setNovel(novelData);
 
                     const res10 = await checkLogin();
                     setAuth(res10);
-                    auth? auth : auth;
+                    auth ? auth : auth;
                     if (res10.isAuthenticated) {
-                        const response = await fetch(`${process.env.SERVER}/api/novelrecent`, {
+                        await fetch(`${process.env.SERVER}/api/novelrecent`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ const Chapter: React.FC = () => {
                             },
                             body: JSON.stringify({
                                 user: res10.user.id,
-                                novel: novelData[0].id,
+                                novel: novelData.id,
                                 last_read_chapter_id: +id,
                                 last_read_chapter_name: chapter.name,
                             })
@@ -143,7 +143,7 @@ const Chapter: React.FC = () => {
                 {chapterData && novel && <ChapterContent chapterData={chapterData} novel={novel} />}
             </div>
 
-            {novel && <Sidebar isOpen={sidebarOpen} novel={novel} currentChapterId={+id} />}
+            {novel && id && <Sidebar isOpen={sidebarOpen} novel={novel} currentChapterId={+id} />}
         </div>
     );
 };

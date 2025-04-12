@@ -1,5 +1,3 @@
-import React from "react";
-
 const CardRecent = ({ vol, chapterTitle, name }: { vol: string, chapterTitle: string, name: string }) => {
   return (
     <div className="flex w-full gap-3 items-center overflow-hidden hover:bg-[#150C28]/40 p-2 rounded-md transition-colors">
