@@ -3,14 +3,13 @@ import CardItem from '../../../components/cardItem';
 import ViewMore from './ViewMore';
 import { ChapterData } from '../../../types/auth';
 
-const API_BASE_URL = "/api";
 const ChapterAdd = () => {
   const [recentChapters, setRecentChapters] = useState<ChapterData[]>([]);
 
   useEffect(() => {
     const fetchRecentNovels = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/chapters/recent`);
+        const response = await fetch(`${process.env.SERVER}/chapters/recent`);
         if (!response.ok) {
           throw new Error(`Failed to fetch recent chapters: ${response.status}`);
         }

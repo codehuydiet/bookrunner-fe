@@ -2,9 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import OutstandingCard from '../../../components/OutstandingCard';
 import { NovelData } from '../../../types/auth';
 
-
-const API_BASE_URL = "/api";
-
 const Outstanding: React.FC = () => {
   const [novels, setNovels] = useState<NovelData[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,8 +15,8 @@ const Outstanding: React.FC = () => {
     const fetchOutstandingNovels = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${process.env.SERVER}${API_BASE_URL}/novels/outstanding`);
-        console.log(`${process.env.SERVER}${API_BASE_URL}/novels/outstanding`);
+        const response = await fetch(`${process.env.SERVER}/novels/outstanding`);
+        console.log(`${process.env.SERVER}/novels/outstanding`);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch outstanding novels: ${response.status}`);

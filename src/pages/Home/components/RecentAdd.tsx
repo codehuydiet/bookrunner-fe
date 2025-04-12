@@ -4,7 +4,6 @@ import NovelCard from "./NovelCard";
 import { FaRegHandPointRight, FaSpinner } from "react-icons/fa6";
 import { NovelDataNoUser } from "../../../types/auth";
 
-const API_BASE_URL = "/api";
 
 const RecentAdd: React.FC = () => {
   const [recentNovels, setRecentNovels] = useState<NovelDataNoUser[]>([]);
@@ -15,7 +14,7 @@ const RecentAdd: React.FC = () => {
     const fetchRecentNovels = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/novels/recent-add`);
+        const response = await fetch(`${process.env.SERVER}/novels/recent-add`);
         if (!response.ok) {
           throw new Error(`Failed to fetch recent novels: ${response.status}`);
         }
