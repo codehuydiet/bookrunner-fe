@@ -23,11 +23,11 @@ const Shop: React.FC = () => {
         user: null
     });
     const booksPerPage = 9;
-
+    const server = import.meta.env.VITE_SERVER
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await fetch(`${process.env.SERVER}/api/books`);
+                const response = await fetch(`${server}/api/books`);
                 const data = await response.json();
                 const data2 = await checkLogin();
                 setAuth(data2);

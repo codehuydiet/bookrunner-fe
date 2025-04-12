@@ -9,13 +9,14 @@ import { checkLogin } from '../Auth/utils/login.util';
 const Home = () => {
     const [user, setUser] = useState<UserFull>()
     const [auth, setAuth] = useState<AuthState>();
+    const server = import.meta.env.VITE_SERVER
 
     useEffect(() => {
         const checkout = async () => {
             const data = await checkLogin();
             setAuth(data);
             auth ? auth : auth;
-            const data2 = await fetch(`${process.env.SERVER}/api/users/${data.user.id}`, {
+            const data2 = await fetch(`${server}/api/users/${data.user.id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,7 +30,7 @@ const Home = () => {
             res.payment.map(async (payment: Payment) => {
                 console.log(payment.orderId);
 
-                await fetch(`${process.env.SERVER}/api/check-status-transaction`, {
+                await fetch(`${server}/api/check-status-transaction`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

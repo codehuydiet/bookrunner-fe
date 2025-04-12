@@ -6,10 +6,11 @@ import { BookData } from '../../types/auth'
 const Book = () => {
   const { id } = useParams()
   const [book, setBook] = useState<BookData>()
+  const server = import.meta.env.VITE_SERVER
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${process.env.SERVER}/api/books/${id}`)
+      const response = await fetch(`${server}/api/books/${id}`)
       const data = await response.json()
       setBook(data)
       console.log(data);

@@ -23,11 +23,12 @@ const Filter: React.FC<FilterProps> = ({
 
     const [price, setPrice] = useState(0);
     const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
+    const server = import.meta.env.VITE_SERVER
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch(`${process.env.SERVER}/api/categories`);
+                const response = await fetch(`${server}/api/categories`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }

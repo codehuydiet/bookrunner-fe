@@ -5,10 +5,11 @@ import { NovelData } from '../../../types/auth';
 
 const RelatedNovels: React.FC = () => {
   const [relatedNovel, setRelatedNovel] = useState<NovelData[]>([]);
+  const server = import.meta.env.VITE_SERVER
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.SERVER}/api/novels`);
+        const response = await fetch(`${server}/api/novels`);
         const data = await response.json();
         // console.log(data);
         setRelatedNovel(data);

@@ -7,11 +7,12 @@ import NovelCard from '../Home/components/NovelCard';
 const UserProfile: React.FC = () => {
   const [user, setUser] = useState<User>();
   const { id } = useParams();
+  const server = import.meta.env.VITE_SERVER
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`${process.env.SERVER}/api/users/${id}`);
+        const response = await fetch(`${server}/api/users/${id}`);
         const data = await response.json();
         setUser(data);
         console.log(data);

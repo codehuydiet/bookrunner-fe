@@ -10,7 +10,7 @@ interface LoginResponse {
   message: string;
   user: User;
 }
-
+const server = import.meta.env.VITE_SERVER
 export const login = async ({ email, password }: { email: string; password: string }) => {
   try {
     if (!email || !password) {
@@ -19,7 +19,7 @@ export const login = async ({ email, password }: { email: string; password: stri
 
     const requestBody = { email, password }
 
-    const response = await fetch(`${process.env.SERVER}/api/auth/login`, {
+    const response = await fetch(`${server}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const login = async ({ email, password }: { email: string; password: stri
 };
 
 export const checkLogin = async () => {
-  const res = await fetch(`${process.env.SERVER}/api/auth/check-login`, {
+  const res = await fetch(`${server}/api/auth/check-login`, {
     method: "GET",
     credentials: "include",
   });
@@ -59,7 +59,7 @@ export const checkLogin = async () => {
 }
 
 export const logout = async () => {
-  const res = await fetch(`${process.env.SERVER}/api/auth/logout`, {
+  const res = await fetch(`${server}/api/auth/logout`, {
     method: "POST",
     credentials: "include",
   });

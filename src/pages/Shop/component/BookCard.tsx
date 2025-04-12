@@ -10,10 +10,11 @@ interface BookCardProps {
 }
 
 const BookCard: React.FC<BookCardProps> = ({ book, renderStars, calculateAverageRating, auth }) => {
+    const server = import.meta.env.VITE_SERVER
     const addToCart = async () => {
         if (auth.isAuthenticated) {
             try {
-                const res = await fetch(`${process.env.SERVER}/api/cart-detail`, {
+                const res = await fetch(`${server}/api/cart-detail`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

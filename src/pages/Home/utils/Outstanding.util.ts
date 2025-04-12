@@ -1,8 +1,10 @@
+const server = import.meta.env.VITE_SERVER
+
 export const outstanding = async () => {
     try {
         console.log("Bắt đầu gửi request outStanding...");
 
-        const response = await fetch(`${process.env.SERVER}/api/novels/outstanding`, {
+        const response = await fetch(`${server}/api/novels/outstanding`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

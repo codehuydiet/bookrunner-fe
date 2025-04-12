@@ -11,6 +11,7 @@ const Cart: React.FC = () => {
         user: null
     });
     const navigate = useNavigate();
+    const server = import.meta.env.VITE_SERVER
     useEffect(() => {
         const fetchData = async () => {
             const data1 = await checkLogin();
@@ -20,7 +21,7 @@ const Cart: React.FC = () => {
             }
             setAuth(data1);
             auth ? auth : auth;
-            const response = await fetch(`${process.env.SERVER}/api/cart-detail/user/${data1.user?.id}`);
+            const response = await fetch(`${server}/api/cart-detail/user/${data1.user?.id}`);
             const data = await response.json();
             setCartItems(data);
         }
@@ -32,7 +33,7 @@ const Cart: React.FC = () => {
     };
 
     const removeItem = (id: number) => {
-        fetch(`${process.env.SERVER}/api/cart-detail/${id}`,
+        fetch(`${server}/api/cart-detail/${id}`,
             {
                 method: 'DELETE',
                 headers: {
@@ -45,7 +46,7 @@ const Cart: React.FC = () => {
 
     const updateQuantity = (id: number, change: number, index: number) => {
         if (change == 1) {
-            fetch(`${process.env.SERVER}/api/cart-detail/add-quantity`,
+            fetch(`${server}/api/cart-detail/add-quantity`,
                 {
                     method: 'POST',
                     headers: {
@@ -57,7 +58,7 @@ const Cart: React.FC = () => {
                 }
             )
         } else if (change == -1) {
-            fetch(`${process.env.SERVER}/api/cart-detail/remove-quantity`,
+            fetch(`${server}/api/cart-detail/remove-quantity`,
                 {
                     method: 'POST',
                     headers: {
@@ -85,7 +86,7 @@ const Cart: React.FC = () => {
         if (cartItems.length == 0) {
             alert('Vui lòng thêm vào giỏ hàng');
         } else {
-            const res = await fetch(`${process.env.SERVER}/api/payment`, {
+            const res = await fetch(`${server}/api/payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,7 +96,7 @@ const Cart: React.FC = () => {
                 })
             })
             const data = await res.json();
-            const res3 = await fetch(`${process.env.SERVER}/api/check-status-transaction`, {
+            const res3 = await fetch(`${server}/api/check-status-transaction`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ const Cart: React.FC = () => {
             })
             const data3 = await res3.json();
             console.log(data3);
-            const res2 = await fetch(`${process.env.SERVER}/api/payments`, {
+            const res2 = await fetch(`${server}/api/payments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ interface Novel {
 
 const CoverImage: React.FC<Novel> = ({ novel, auth }) => {
   // console.log(auth);
-
+  const server = import.meta.env.VITE_SERVER
   const [isLiked, setIsLiked] = useState(false);
   const handlerLike = async () => {
     setIsLiked(!isLiked);
@@ -18,7 +18,7 @@ const CoverImage: React.FC<Novel> = ({ novel, auth }) => {
     } else {
       novel.like += 1;
     }
-    await fetch(`${process.env.SERVER}/api/novel-like`, {
+    await fetch(`${server}/api/novel-like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const CoverImage: React.FC<Novel> = ({ novel, auth }) => {
   }
   useEffect(() => {
     const checkLike = async () => {
-      const res = await fetch(`${process.env.SERVER}/api/novel-like/novel/${novel.id}`);
+      const res = await fetch(`${server}/api/novel-like/novel/${novel.id}`);
       const data = await res.json();
       console.log(data);
 

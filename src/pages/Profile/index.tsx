@@ -15,6 +15,7 @@ const ProfilePage: React.FC = () => {
         desc: '',
         image: ''
     });
+    const server = import.meta.env.VITE_SERVER
 
     useEffect(() => {
 
@@ -46,7 +47,7 @@ const ProfilePage: React.FC = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            await fetch(`${process.env.SERVER}/api/users/${userProfile?.id}`, {
+            await fetch(`${server}/api/users/${userProfile?.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ const ProfilePage: React.FC = () => {
                     const uploadForm = new FormData();
                     uploadForm.append('file', file);
 
-                    const res = await fetch(`${process.env.SERVER}/api/upload`, {
+                    const res = await fetch(`${server}/api/upload`, {
                         method: 'POST',
                         body: uploadForm
                     });

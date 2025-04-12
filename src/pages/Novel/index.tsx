@@ -18,15 +18,16 @@ const NovelPage: React.FC = () => {
         isAuthenticated: false,
         user: null
     });
+    const server = import.meta.env.VITE_SERVER
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${process.env.SERVER}/api/novels/${id}`);
+                const response = await fetch(`${server}/api/novels/${id}`);
                 const data = await response.json();
                 // console.log(data);
                 setNovel(data[0]);
-                const response2 = await fetch(`${process.env.SERVER}/api/novels/outstanding`);
+                const response2 = await fetch(`${server}/api/novels/outstanding`);
                 const data2 = await response2.json();
                 // console.log("outstanding ", data2);
                 setNovels(data2);
@@ -107,7 +108,7 @@ const NovelPage: React.FC = () => {
                 </div>
                 {
                     novel ? (
-                        <RelatedNovels/>
+                        <RelatedNovels />
                     ) : (
                         <p>Loading...</p>
                     )

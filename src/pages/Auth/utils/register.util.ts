@@ -1,6 +1,8 @@
+const server = import.meta.env.VITE_SERVER
+
 export const register = async (username: string, email: string, password: string) => {
     try {
-        const response = await fetch(`${process.env.SERVER}/api/auth/register`, {
+        const response = await fetch(`${server}/api/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -9,12 +9,12 @@ const RecentAdd: React.FC = () => {
   const [recentNovels, setRecentNovels] = useState<NovelDataNoUser[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const server = import.meta.env.VITE_SERVER
   useEffect(() => {
     const fetchRecentNovels = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${process.env.SERVER}/novels/recent-add`);
+        const response = await fetch(`${server}/novels/recent-add`);
         if (!response.ok) {
           throw new Error(`Failed to fetch recent novels: ${response.status}`);
         }

@@ -10,19 +10,21 @@ const Outstanding: React.FC = () => {
 
   const ITEMS_PER_SLIDE = 4;
   const TOTAL_SLIDES = 2;
+  const server = import.meta.env.VITE_SERVER
+  // console.log(server);
 
   useEffect(() => {
     const fetchOutstandingNovels = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${process.env.SERVER}/novels/outstanding`);
-        console.log(`${process.env.SERVER}/novels/outstanding`);
-
+        const response = await fetch(`${server}/api/novels/outstanding`);
         if (!response.ok) {
           throw new Error(`Failed to fetch outstanding novels: ${response.status}`);
         }
 
         const data = await response.json();
+        console.log(data);
+        
         setNovels(data);
       } catch (error) {
         console.error("Error fetching outstanding novels:", error);

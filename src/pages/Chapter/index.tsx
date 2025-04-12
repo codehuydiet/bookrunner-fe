@@ -17,6 +17,7 @@ const Chapter: React.FC = () => {
     const [novel, setNovel] = useState<NovelData | null>();
     const { id } = useParams<{ id: string }>();
     const [auth, setAuth] = useState<AuthState>();
+    const server = import.meta.env.VITE_SERVER
 
 
     const toggleSidebar = useCallback((): void => {
@@ -88,7 +89,7 @@ const Chapter: React.FC = () => {
                     setAuth(res10);
                     auth ? auth : auth;
                     if (res10.isAuthenticated) {
-                        await fetch(`${process.env.SERVER}/api/novelrecent`, {
+                        await fetch(`${server}/api/novelrecent`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

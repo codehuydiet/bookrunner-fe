@@ -21,6 +21,7 @@ const Register = () => {
         confirmPassword: ''
     });
     const [error, setError] = useState<string>('');
+    const server = import.meta.env.VITE_SERVER
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;
@@ -41,7 +42,7 @@ const Register = () => {
         }
 
         try {
-            const response = await axios.post<AuthResponse>(`${process.env.SERVER}/api/auth/register`, {
+            const response = await axios.post<AuthResponse>(`${server}/api/auth/register`, {
                 username: formData.name,
                 email: formData.email,
                 password: formData.password

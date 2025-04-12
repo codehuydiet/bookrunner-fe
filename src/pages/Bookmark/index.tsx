@@ -8,14 +8,15 @@ const Bookmark: React.FC = () => {
     const [auth, setAuth] = useState<AuthState>();
     const [recentNovel, setRecentNovel] = useState<NovelRecent[]>([])
     const [like, setLike] = useState<NovelLike[]>([])
+    const server = import.meta.env.VITE_SERVER
     useEffect(() => {
         const checkout = async () => {
             const res = await checkLogin();
             setAuth(res);
             auth ? auth : auth;
-            const response = await fetch(`${process.env.SERVER}/api/novelrecent/user/${res.user.id}`)
+            const response = await fetch(`${server}/api/novelrecent/user/${res.user.id}`)
             const res2 = await response.json();
-            const response2 = await fetch(`${process.env.SERVER}/api/novel-like/user/${res.user.id}`)
+            const response2 = await fetch(`${server}/api/novel-like/user/${res.user.id}`)
             const res1 = await response2.json();
             setLike(res1)
             setRecentNovel(res2)

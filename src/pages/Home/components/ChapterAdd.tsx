@@ -5,11 +5,11 @@ import { ChapterData } from '../../../types/auth';
 
 const ChapterAdd = () => {
   const [recentChapters, setRecentChapters] = useState<ChapterData[]>([]);
-
+  const server = import.meta.env.VITE_SERVER
   useEffect(() => {
     const fetchRecentNovels = async () => {
       try {
-        const response = await fetch(`${process.env.SERVER}/chapters/recent`);
+        const response = await fetch(`${server}/chapters/recent`);
         if (!response.ok) {
           throw new Error(`Failed to fetch recent chapters: ${response.status}`);
         }
